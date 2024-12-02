@@ -1,0 +1,33 @@
+
+1.AuthProvider
+  => provides authentication & authorization to modern websites
+  => an object that contains methods for handling authentication and authorization in an app. 
+
+2. Link,UseNavigate are part 'react-router-dom'
+
+3. Tailwind CSS Integration 
+   
+       Step1: install tailwind css
+          npm install -D tailwindcss postcss autoprefixer
+          npx tailwindcss init
+
+       step2: tailwind.config.js
+          module.exports = {
+            content: [
+              "./src//*.{js,jsx,ts,tsx}", // Add all paths that use Tailwind classes
+            ],
+            theme: {
+              extend: {},
+            },
+            plugins: [],
+          }
+
+        step3 =>Create a src/tailwind.css
+          @tailwind base;
+          @tailwind components;
+          @tailwind utilities;
+
+        step4 => src/index.js
+          import './tailwind.css';
+  
+  4.

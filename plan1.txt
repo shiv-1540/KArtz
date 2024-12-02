@@ -1,0 +1,137 @@
+
+
+# KArtz
+
+ home 
+ profile
+ 
+PAGES
+
+Landing Page
+ # Login Page
+ # SignUp Page 
+ # Home Page  -> categories
+
+Upload Page 
+ # Cart Page 
+Purchasing Page
+Payment Page 
+ #Profile Page
+Customer Stories Page
+ # Contact Us
+FAQ
+
+
+Home Page 
+  Filter 
+    Category 
+
+
+Users 
+  1. Admin
+  2. Customer
+
+  Admin
+     Profile
+     User Management 
+     # Blog Page 
+     Payement management 
+     Upload posters
+
+     
+
+  Customer
+     Profile 
+     Reviews Page 
+     Profile 
+     Order History Page 
+
+FUnctionalities
+  1. Uploading Posters
+       Acc to Category
+           size : A3 A4 13*19 12*18
+           qty  :   
+        
+  2. Customer Purchasing
+
+  3. Product Reviews
+      Rating 
+      Commenting
+
+
+Collections
+ Users
+    id 
+    name 
+    email
+    phoneno
+    address  
+       city
+       postal code
+       country
+    wishlist
+    order history
+
+
+ Product 
+   id  
+   name 
+   Category
+   price 
+   size
+   material
+   despcription
+   images
+   Rating
+   Reviews 
+       user: 
+          name
+          Rating
+          comment 
+   stock
+ 
+ Category
+  id 
+  name 
+  despcription
+
+ Cart 
+   id
+   userid
+   items
+      prodid
+      qty
+      prodid
+      prodqty
+      promocode 
+      total price
+
+
+ Orders 
+   id
+   userid
+   orderdate 
+   items
+      prodid
+      qty
+      prodid
+      prodqty
+      promocode 
+      total price
+      payment status
+      shipping address
+            address
+                city
+                state 
+                postcode 
+                country
+      orderstatus          
+
+     
+
+ Blog
+
+
+
+
+

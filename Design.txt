@@ -1,0 +1,28 @@
+step1: Install react vite app
+   npm create vite@latest client -- --react   
+
+step2:
+    cd client
+    npm install
+    npm run dev
+
+step3: 
+  1.Add AuthProvider
+    npm install @auth0/auth0-react bootstrap react-dom react-router-dom
+
+  2.Add chakra Ui
+       npm i @chakra-ui/react @emotion/react
+    add snippets of it 
+       npx @chakra-ui/cli snippet add
+  3.Adding Material UI -> checkout on website
+  4.Adding Tailwind CSS 
+     npm install -D tailwindcss postcss autoprefixer
+     
+     npm install @headlessui/react @heroicons/react
+  5. Install icons
+      npm install react-icons --save
+      npm i --save @fortawesome/react-fontawesome@latest
+  6. 
+
+
+ 
