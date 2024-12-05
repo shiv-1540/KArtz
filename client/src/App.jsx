@@ -14,6 +14,7 @@ import AdminDashboard from './pages/Admin/AdminDashboard';
 import UploadPoster from './components/admin/UploadPoster.jsx';
 import AdminLogin from './pages/Forms/AdminLogin.jsx';
 import AdminSignUp from './pages/Forms/AdminSignUp.jsx';
+import LandingPage from './pages/landPage.jsx';
 
 
 const handleLogout=()=>{
@@ -22,10 +23,11 @@ const handleLogout=()=>{
 
 
 const routes = createBrowserRouter([
-  { path: '/', element: <LoginForm /> },
+  { path: '/', element: <LoginForm/> },
   { path: '/registration', element: <RegistrationForm /> },
   { path: '/adminlogin',element: <AdminLogin/>},
   { path: '/adminsignup',element: <AdminSignUp/>},
+  {path:  '/landpage',element:<LandingPage/>},
   { path: '/home/:username', element: <HomePage /> },
   { path: '/cart/:username',  element:<CartPage/>},
   { path: '/profile/:username',element: <Profile/>},

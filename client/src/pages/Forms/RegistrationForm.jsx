@@ -4,7 +4,7 @@ import axios from 'axios'; // Import Axios
 import toast from "react-hot-toast";
 import Input from "@mui/material/Input";
 import Button from '@mui/material/Button';
-import signup1 from '../../../public/videos/signup.mp4';
+import signup1 from '/videos/signup.mp4';
 import './signup.css';
 
 const RegistrationForm = () => {

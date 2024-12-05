@@ -2,9 +2,14 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
+const Razorpay = require('razorpay');
 
 const cloudinary=require('./cloudinary');
 
+const razorpay = new Razorpay({
+    key_id: 'rzp_test_wTfvWCIKXITjBZ',
+    key_secret: 'eTM4b2YEFtQW2zA8WruDOc02',
+});
 
 const port = process.env.PORT || 3000;
 // Import routes
@@ -35,6 +40,7 @@ app.use('/userAuthen', userAuthen); // Ensure this matches frontend
 app.use('/adminAuthen', adminAuthen);
 app.use('/admindash',adminDash);
 app.use('/userdash',userRoute);
+//app.use("/payment", require("./routes/Payments"));
 
 
 app.post('/upload', async (req, res, next) => { // Corrected syntax
@@ -73,6 +79,26 @@ app.post('/uploadprofimg', async (req, res) => {
     } catch (error) {
         console.error('Error uploading image:', error);
         res.status(500).json({ message: 'Image upload failed', error });
+    }
+});
+
+
+// Create an order
+app.post('/create-order', async (req, res) => {
+    const { amount, currency } = req.body; // Get amount and currency from the request body
+
+    const options = {
+        amount: amount * 100, // Amount is in paise
+        currency: currency,
+        receipt: `receipt_order_${Math.random()}`, // Unique receipt ID
+    };
+
+    try {
+        const order = await razorpay.orders.create(options);
+        res.json(order);
+    } catch (error) {
+        console.error('Error creating Razorpay order:', error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
 

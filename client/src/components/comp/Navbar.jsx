@@ -36,11 +36,10 @@ function Navbar() {
         
         {/* Logo and Tagline */}
         <div className="flex flex-col">
-          <b className="text-gray-100 text-3xl  font-bold text-align-center "><img src={cartlogo} className='w-20 h-10'/> </b>
+          <b className="text-gray-100 text-3xl  font-bold text-align-center "><img src={cartlogo} className='w-27 h-10 '/> </b>
           <p className="text-gray-100 text-1xl font-bold">BRINGING WORDS TO LIFE</p>
         </div>
 
-     
 
         {/* Profile and Logout */}
         <div className="flex items-center space-x-4">

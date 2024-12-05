@@ -73,12 +73,12 @@ const AdminLogin = () => {
          Switch to {switchTo === 'admin' ? 'Admin' : 'User'} {isUserLogin || location.pathname.includes('adminlogin') ? 'Login' : 'Register'}
      </button>
 
-      {/* Video Background */}
+      {/* Video Background
       <video autoPlay loop muted id="background-video">
         <source src={signin1} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-
+      */}
       {/* Content */}
       <div id="signhead">
         <h1>Kartz</h1>

@@ -11,11 +11,11 @@ import ManageUsers from "../../components/admin/ManageUsers";
 import ManageOrders from "../../components/admin/ManageOrders";
 import ManagePayments from "../../components/admin/ManagePayments";
 
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import Footer from "../../components/comp/Footer";
 
 const AdminDashboard = () => {
-    const {username,id}=useParams();
+    const { username, id } = useParams();
     const { authData } = useContext(AuthContext);
     const [currentSection, setCurrentSection] = useState("DefaultWelcome"); // Default section
 
@@ -23,11 +23,11 @@ const AdminDashboard = () => {
     const renderSection = () => {
         switch (currentSection) {
             case "DefaultWelcome":
-                return <DefaultWelcome username={username}/>;
+                return <DefaultWelcome username={username} />;
             case "UploadPoster":
-                return <UploadPoster username={username} id={id}/>;
+                return <UploadPoster username={username} id={id} />;
             case "ManagePosters":
-                return <ManagePosters username={username}/>;
+                return <ManagePosters username={username} />;
             case "ManageUsers":
                 return <ManageUsers username={username} />;
             case "ManageOrders":
@@ -40,70 +40,67 @@ const AdminDashboard = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col bg-gray-50">
             {/* Navbar */}
-            <AdminNavbar 
-                user={authData?.user} 
-                username={authData?.username} 
+            <AdminNavbar
+                user={authData?.user}
+                username={authData?.username}
                 handleLogout={() => {
-                    localStorage.removeItem('token');
-                    window.location.href = '/adminlogin';
-                }} 
+                    localStorage.removeItem("token");
+                    window.location.href = "/adminlogin";
+                }}
             />
 
-            {/* Dashboard Layout */}
-            <div className="flex flex-grow mt-12">
-                {/* Sidebar */}
-                <aside className="bg-gray-800 text-white w-64 min-h-screen p-4">
-                    <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
-                    <nav className="flex flex-col gap-4">
-                        <button 
-                            className={`py-2 px-4 rounded text-left ${currentSection === "DefaultWelcome" ? "bg-gray-600" : "bg-gray-700 hover:bg-gray-600"}`}
-                            onClick={() => setCurrentSection("DefaultWelcome")}
-                        >
-                            Default Welcome Page
-                        </button>
-                        <button 
-                            className={`py-2 px-4 rounded text-left ${currentSection === "UploadPoster" ? "bg-gray-600" : "bg-gray-700 hover:bg-gray-600"}`}
-                            onClick={() => setCurrentSection("UploadPoster")}
-                        >
-                            Upload Poster
-                        </button>
-                        <button 
-                            className={`py-2 px-4 rounded text-left ${currentSection === "ManagePosters" ? "bg-gray-600" : "bg-gray-700 hover:bg-gray-600"}`}
-                            onClick={() => setCurrentSection("ManagePosters")}
-                        >
-                            Manage Posters
-                        </button>
-                        <button 
-                            className={`py-2 px-4 rounded text-left ${currentSection === "ManageUsers" ? "bg-gray-600" : "bg-gray-700 hover:bg-gray-600"}`}
-                            onClick={() => setCurrentSection("ManageUsers")}
-                        >
-                            Manage Users
-                        </button>
-                        <button 
-                            className={`py-2 px-4 rounded text-left ${currentSection === "ManageOrders" ? "bg-gray-600" : "bg-gray-700 hover:bg-gray-600"}`}
-                            onClick={() => setCurrentSection("ManageOrders")}
-                        >
-                            Manage Orders
-                        </button>
-                        <button 
-                            className={`py-2 px-4 rounded text-left ${currentSection === "ManagePayments" ? "bg-gray-600" : "bg-gray-700 hover:bg-gray-600"}`}
-                            onClick={() => setCurrentSection("ManagePayments")}
-                        >
-                            Manage Payments
-                        </button>
-                    </nav>
-                </aside>
-
+           {/* Dashboard Layout */}
+                <div className="flex flex-col min-h-screen">
+                {/* Header */}
+              
                 {/* Main Content */}
-                <main className="flex-grow bg-gray-100 p-8">
-                    {renderSection()}
-                </main>
-            </div>
+                <div className="flex flex-grow mt-16">
+                    {/* Sidebar */}
+                    <aside className="fixed bg-gradient-to-br from-blue-800 to-gray-900 text-white w-72 min-h-screen shadow-lg p-6">
+                    <div className="mb-8">
+                        <h2 className="text-2xl font-bold text-center mb-2">Admin Panel</h2>
+                        <p className="text-sm text-gray-400 text-center">Welcome, {username}!</p>
+                    </div>
+                    <nav className="flex flex-col gap-3">
+                        {[
+                        { name: "Default Welcome", key: "DefaultWelcome" },
+                        { name: "Upload Poster", key: "UploadPoster" },
+                        { name: "Manage Posters", key: "ManagePosters" },
+                        { name: "Manage Users", key: "ManageUsers" },
+                        { name: "Manage Orders", key: "ManageOrders" },
+                        { name: "Manage Payments", key: "ManagePayments" },
+                        ].map(({ name, key }) => (
+                        <button
+                            key={key}
+                            className={`py-3 px-4 rounded-lg text-left transition-all font-medium ${
+                            currentSection === key
+                                ? "bg-blue-600 text-white"
+                                : "bg-gray-700 hover:bg-blue-600"
+                            }`}
+                            onClick={() => setCurrentSection(key)}
+                        >
+                            {name}
+                        </button>
+                        ))}
+                    </nav>
+                    </aside>
 
-            {/* Footer */}
-            <Footer/>
+                    {/* Main Section */}
+                    <main className="ml-72 flex-grow bg-gray-50 p-8">
+                    <div className="bg-gradient-to-r from-blue-100 to-gray-100 rounded-lg shadow p-8">
+                        {renderSection()}
+                    </div>
+                    </main>
+                </div>
+
+                {/* Footer */}
+                <footer className="bg-gradient-to-r from-blue-800 to-gray-900 text-white text-center py-4 mt-auto shadow-lg">
+                    <p>&copy; 2024 KArtz. All rights reserved.</p>
+                </footer>
+                </div>
+
         </div>
     );
 };

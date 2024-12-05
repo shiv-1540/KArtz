@@ -58,6 +58,48 @@ const CartPage = () => {
         }
     };
 
+
+    const handleCheckout = async () => {
+        const amount = cart.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+        const currency = 'INR'; // Change this if you are using a different currency
+
+        try {
+            const response = await axios.post('http://localhost:3000/create-order', { amount, currency });
+            const { id, amount: orderAmount, currency: orderCurrency } = response.data;
+
+            const options = {
+                key: 'rzp_test_wTfvWCIKXITjBZ', // Enter the Key ID generated from the Razorpay Dashboard
+                amount: orderAmount, // Amount is in paise
+                currency: orderCurrency,
+                name: 'KArtz',
+                description: 'Purchase Description',
+                order_id: id, // This is the order_id created in your backend
+                handler: function (response) {
+                    // Handle payment success
+                    console.log('Payment successful:', response);
+                    alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+                    // Optionally, you can update the order status in your database here
+                },
+                prefill: {
+                    name: 'Customer Name',
+                    email: 'customer@example.com',
+                    contact: '9999999999',
+                },
+                notes: {
+                    address: 'Customer Address',
+                },
+                theme: {
+                    color: '#F37254',
+                },
+            };
+
+            const razorpay = new window.Razorpay(options);
+            razorpay.open();
+        } catch (error) {
+            console.error('Error creating Razorpay order:', error);
+        }
+    };
+
     return (
         <div className="flex flex-col items-center mt-10">
             <Navbar />
@@ -119,7 +161,7 @@ const CartPage = () => {
                     <div className="mt-6">
                         <button 
                             className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition duration-200"
-                            onClick={() => {/* Handle checkout logic here */}}
+                            onClick={handleCheckout}
                         >
                             Proceed to Checkout
                         </button>
