@@ -33,6 +33,9 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+app.get("/", (req, res) => {
+    res.json("Hello");
+})
 
 
 const transporter = nodemailer.createTransport({
