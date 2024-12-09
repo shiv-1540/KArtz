@@ -1,16 +1,22 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import proflogo from '../../assets/imgs/me16.jpg'
 import cartlogo1 from '../../assets/imgs/cartlogo1.png'
 import cartlogo from '../../assets/imgs/112.png'
 import { useParams } from 'react-router-dom';
 
+import { AuthContext } from "../../context/AuthContext";
+
 function Navbar() {
-  const { username } = useParams();
+  const { username,profile } = useParams();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  
+  const { authData } = useContext(AuthContext); // Accessing authData from context
+
+  console.log("Auth UserId from Navbar: ",authData.userId);
+  console.log("Auth Username from Navbar: ",authData.username);
+  console.log("Auth profileImage from Navbar: ",authData.profileImage);
   console.log("Username from Navbar: ",username);
 
   const toggleDropdown = () => {
@@ -88,7 +94,7 @@ function Navbar() {
                   className="flex items-center space-x-2"
                   onClick={toggleDropdown}>
                   <img
-                    src={proflogo}
+                    src={authData.profileImage||profile||proflogo}
                     alt="Profile Picture"
                     className="w-10 h-10 rounded-full object-cover"
                     id="profimg"

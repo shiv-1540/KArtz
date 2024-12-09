@@ -45,6 +45,7 @@ router.post('/adminsignup', async (req, res) => {
             username,
             email,
             password: hashedPassword,
+            isVerified: false
         });
         
 
@@ -76,7 +77,10 @@ router.post('/adminlogin', async (req, res) => {
         if (!isPasswordValid) {
             return res.status(401).json({ message: 'Invalid password' });
         }
-
+        
+       if (!admin.isVerified) {
+         return res.status(403).json({ message: 'Account not verified. Please contact an admin.' });
+      }
         // Generate a JWT token
         const token = generateToken({ id: admin._id, email: admin.email });
 

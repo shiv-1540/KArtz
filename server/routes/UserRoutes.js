@@ -8,8 +8,9 @@ const Poster=require('../model/PosterSchema.js');
 const Admin=require('../model/AdminSchema.js');
 const User=require('../model/UserSchema.js');
 const Cart=require('../model/CartSchema.js');
-
 const Order=require('../model/OrderSchema');
+const Notification = require('../model/NotificationSchema.js'); // Import Notification model
+const Query=require('../model/QuerySchema.js')
 
 
 // Fetch Posters Route
@@ -321,11 +322,96 @@ router.post('/checkout/:username', async (req, res) => {
     }
 });
 
+// GET ORDER HISTORY
+router.get('/order-history/:username', async (req, res) => {
+    const { username } = req.params;
 
+    try {
+        // Find all orders for the user
+        const orders = await Order.find({ username: username }).sort({ createdAt: -1 }); // Sort by most recent
 
+        if (!orders || orders.length === 0) {
+            return res.status(404).json({ message: 'No orders found' });
+        }
 
+        return res.status(200).json(orders);
+    } catch (error) {
+        console.error('Error fetching order history:', error);
+        return res.status(500).json({ message: 'Server error' });
+    }
+});
 
+// POST CREATE ORDER
+router.post('/create-order', async (req, res) => {
+    const { username, items, totalAmount, paymentMethod } = req.body;
 
+    try {
+        // Create a new order
+        const newOrder = new Order({
+            username: username,
+            items: items,
+            totalAmount: totalAmount,
+            paymentStatus: 'Pending', // Initially set to Pending
+            orderStatus: 'Processing', // Initially set to Processing
+            paymentMethod: paymentMethod, // Payment method from the request
+        });
+
+        // Save the order to the database
+        await newOrder.save();
+
+        // Return the order ID and amount for Razorpay
+        return res.status(200).json({ id: newOrder._id, amount: totalAmount, currency: 'INR' });
+    } catch (error) {
+        console.error('Error creating order:', error);
+        return res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// POST: Create a new query
+router.post('/queries', async (req, res) => {
+    const { name, email, message } = req.body;
+
+    try {
+        const newQuery = new Query({ name, email, message });
+        await newQuery.save();
+        return res.status(201).json({ message: 'Query submitted successfully', query: newQuery });
+    } catch (error) {
+        console.error('Error submitting query:', error);
+        return res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// GET: Get notifications for a user
+router.get('/notifications/:userId', async (req, res) => {
+    const { userId } = req.params;
+
+    try {
+        const notifications = await Notification.find({ userId }).sort({ createdAt: -1 });
+        return res.status(200).json(notifications);
+    } catch (error) {
+        console.error('Error fetching notifications:', error);
+        return res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// PUT: Mark notification as read
+router.put('/notifications/:id/read', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const notification = await Notification.findById(id);
+        if (!notification) {
+ return res.status(404).json({ message: 'Notification not found' });
+        }
+
+        notification.isRead = true;
+        await notification.save();
+        return res.status(200).json({ message: 'Notification marked as read', notification });
+    } catch (error) {
+        console.error('Error marking notification as read:', error);
+        return res.status(500).json({ message: 'Server error' });
+    }
+});
 
 
 

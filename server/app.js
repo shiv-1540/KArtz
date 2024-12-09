@@ -3,6 +3,7 @@ const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
 const Razorpay = require('razorpay');
+const nodemailer = require("nodemailer");
 
 const cloudinary=require('./cloudinary');
 
@@ -33,6 +34,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
+
+const transporter = nodemailer.createTransport({
+    service: "Gmail", 
+    auth: {
+      user: "shivghyar538@gmail.com",
+      pass: "epte pezp rcvv loge",
+    }
+  });
+
+  app.post("/send", (req, res) => {
+    const mailOptions = {
+      from: req.body.from,
+      to: req.body.to,
+      subject: req.body.subject,
+      html: req.body.message
+    };
+
+    console.log("From API SEND route: ",mailOptions);
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error); // Log the error details
+            return res.status(500).send(error.message); // Send the error message in the response
+        }
+        res.status(200).send("Email sent successfully");
+    });
+  });
 
 
 // Routes

@@ -13,6 +13,8 @@ import ManagePayments from "../../components/admin/ManagePayments";
 
 import { useParams } from "react-router-dom";
 import Footer from "../../components/comp/Footer";
+import VerifyAdmins from "../../components/admin/VerifyAdmin";
+import AdminQueries from "../../components/admin/ReplyQueries";
 
 const AdminDashboard = () => {
     const { username, id } = useParams();
@@ -34,6 +36,10 @@ const AdminDashboard = () => {
                 return <ManageOrders />;
             case "ManagePayments":
                 return <ManagePayments />;
+            case "ManageAdmins":
+                return <VerifyAdmins/>;
+            case "UserQueries":
+                return <AdminQueries/>;
             default:
                 return <DefaultWelcome username={username} />;
         }
@@ -69,8 +75,10 @@ const AdminDashboard = () => {
                         { name: "Upload Poster", key: "UploadPoster" },
                         { name: "Manage Posters", key: "ManagePosters" },
                         { name: "Manage Users", key: "ManageUsers" },
+                        { name: "Manage Admins", key: "ManageAdmins" },
                         { name: "Manage Orders", key: "ManageOrders" },
                         { name: "Manage Payments", key: "ManagePayments" },
+                        { name: "User Queries", key: "UserQueries" },
                         ].map(({ name, key }) => (
                         <button
                             key={key}

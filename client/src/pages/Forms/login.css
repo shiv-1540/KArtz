@@ -122,3 +122,27 @@
     color: #fff;
   }
   
+
+
+
+  #signin {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .blur-sm {
+    filter: blur(4px);
+    transition: all 0.3s ease-in-out;
+  }
+  
+
+  
+  .fixed {
+    z-index: 50;
+  }
+  

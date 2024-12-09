@@ -5,6 +5,7 @@ import toast from "react-hot-toast"; // Toast for notifications
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 import signin1 from '../../../public/videos/signin.mp4';
+import verify from "../../components/comp/verify";
 
 const AdminLogin = () => {
   const { login } = useContext(AuthContext); // Access the login function from context
@@ -109,6 +110,9 @@ const AdminLogin = () => {
           </div>
           <p>
             New to Kartz? <Link to="/registration">Sign Up</Link>
+          </p>
+          <p>
+             Not Verified? <Link to="/verify">Request Admin</Link>
           </p>
         </form>
       </div>

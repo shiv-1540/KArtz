@@ -62,11 +62,13 @@ const CartPage = () => {
     const handleCheckout = async () => {
         const amount = cart.items.reduce((total, item) => total + (item.price * item.quantity), 0);
         const currency = 'INR'; // Change this if you are using a different currency
-
+    
         try {
+            // Step 1: Create an order in Razorpay
             const response = await axios.post('http://localhost:3000/create-order', { amount, currency });
             const { id, amount: orderAmount, currency: orderCurrency } = response.data;
-
+    
+            // Step 2: Set up Razorpay options
             const options = {
                 key: 'rzp_test_wTfvWCIKXITjBZ', // Enter the Key ID generated from the Razorpay Dashboard
                 amount: orderAmount, // Amount is in paise
@@ -74,11 +76,31 @@ const CartPage = () => {
                 name: 'KArtz',
                 description: 'Purchase Description',
                 order_id: id, // This is the order_id created in your backend
-                handler: function (response) {
+                handler: async function (response) {
                     // Handle payment success
                     console.log('Payment successful:', response);
                     alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
-                    // Optionally, you can update the order status in your database here
+    
+                    // Step 3: Create an order in your database
+                    try {
+                        const orderResponse = await axios.post(`http://localhost:3000/userdash/checkout/${username}`, {
+                            paymentMethod: 'Credit Card', // Change this based on the selected payment method
+                            items: cart.items, // Pass the items from the cart
+                            totalAmount: amount, // Pass the total amount
+                        });
+    
+                        console.log('Order created successfully:', orderResponse.data);
+                    } catch (error) {
+                        console.error('Error creating order in database:', error);
+                    }
+    
+                    // // Step 4: Clear the cart
+                    // try {
+                    //     await axios.delete(`http://localhost:3000/cart/${username}`); // Assuming you have a route to clear the cart
+                    //     console.log('Cart cleared successfully');
+                    // } catch (error) {
+                    //     console.error('Error clearing cart:', error);
+                    // }
                 },
                 prefill: {
                     name: 'Customer Name',
@@ -92,7 +114,8 @@ const CartPage = () => {
                     color: '#F37254',
                 },
             };
-
+    
+            // Step 5: Open Razorpay payment modal
             const razorpay = new window.Razorpay(options);
             razorpay.open();
         } catch (error) {

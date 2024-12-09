@@ -15,6 +15,7 @@ import UploadPoster from './components/admin/UploadPoster.jsx';
 import AdminLogin from './pages/Forms/AdminLogin.jsx';
 import AdminSignUp from './pages/Forms/AdminSignUp.jsx';
 import LandingPage from './pages/landPage.jsx';
+import Verify1 from './components/comp/verify.jsx';
 
 
 const handleLogout=()=>{
@@ -33,7 +34,8 @@ const routes = createBrowserRouter([
   { path: '/profile/:username',element: <Profile/>},
   { path: '/contactus', element: <Contact/>},
   { path: '/admindash/:username/:id', element: <AdminDashboard/>},
-  { path:'/upload/:username', element: <UploadPoster/>}
+  { path:'/upload/:username', element: <UploadPoster/>},
+  { path:'/verify', element:<Verify1/>}
 ]);
 
 const App = () => (

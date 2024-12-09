@@ -1,5 +1,5 @@
 
-1.AuthProvider
+1. AuthProvider
   => provides authentication & authorization to modern websites
   => an object that contains methods for handling authentication and authorization in an app. 
 
@@ -30,4 +30,34 @@
         step4 => src/index.js
           import './tailwind.css';
   
-  4.
+4. Github Handling
+
+     Steps to Push Updates to GitHub
+       step1: Stage the Changes
+              Stage all modified, deleted, and untracked files
+               git Add -A
+
+       step2: Verify the Changes
+              Check the staged changes to ensure everything is correct
+              git status
+
+       step3: git commit -m "Updated project files, removed unnecessary files, and added new assets"
+       step4: Push Your Changes to GitHub
+              git push origin main
+
+    ## if Pull from Github
+       step5: Pull the Latest Changes from GitHub
+              To ensure your local branch is up to date with the remote main branch
+
+5. NodeMailer Mail sending
+      step1:  
+        Install nodemailer 
+        npm install nodemailer 
+
+      step2:
+        
+6. Admin Verification 
+
+7. 
+       
+

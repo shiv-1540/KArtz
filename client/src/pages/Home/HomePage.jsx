@@ -14,14 +14,15 @@ import { useParams } from 'react-router-dom';
 const Homepage = () => {
 
   const { username } = useParams(); // Use useParams to get the username from the URL
-  console.log("From homepage: ", username);
+ // console.log("From homepage: ", username);
 
 
-  const { authData, logout } = useContext(AuthContext);
+  const { authData } = useContext(AuthContext); // Accessing authData from context
   const [posters, setPosters] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
 
-
+   console.log("From home page auth IMG: ",authData);
+   
   const fetchPosters = async (category) => {
     try {
         const response = await axios.get(`http://localhost:3000/userdash/posters`, {
@@ -43,7 +44,7 @@ const Homepage = () => {
       {/* Navbar */}
       <div>
             {username ? (
-                <Navbar username={username} />
+                <Navbar username={username} profile={authData.profileImage}/>
             ) : (
                 <p>Loading...</p> // Or some other loading state
             )}

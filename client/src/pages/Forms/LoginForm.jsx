@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import {useLocation, Link, useNavigate } from "react-router-dom";
 import axios from "axios"; // Import Axios for API calls
 import toast from "react-hot-toast"; // Toast for notifications
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext, useAuth } from "../../context/AuthContext";
 import "./login.css";
 import signin1 from '../../../public/videos/signin.mp4';
 
@@ -42,14 +42,21 @@ const LoginForm = () => {
     });
 
       if (response.status === 200) {
-        const { token, userId } = response.data;
+        const { token } = response.data;
 
-        // Save the token and userId using AuthContext
-        login(token, userId);
+      
+        
         toast.success("Login successful!");
+        const userId=response.data.user.id;
         const username=response.data.user.username;
+        const profileImage=response.data.user.profileImage;
 
-        console.log("Username of user:",username);
+        console.log("From LoginForm userId : ",userId);
+        console.log("From LoginForm username : ",username);
+
+        login(token, userId, profileImage); // Call the login function with the received data
+        console.log("Username of user:", username);
+        console.log("ProfileImage: ",profileImage);
         navigate(`/home/${username}`); // Redirect to the home page after login
       }
     } catch (error) {

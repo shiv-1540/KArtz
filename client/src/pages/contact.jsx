@@ -20,7 +20,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("http://localhost:3000/userdash/queries", { // Updated endpoint
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -111,11 +111,11 @@ const Contact = () => {
               <p className="text-gray-600 mt-4">
                 Stay connected for updates and offers!
               </p>
-            </div>
+            </ div>
           </div>
-       
-         {/* Contact Form Section */}
-            <div className="mt-8">
+
+          {/* Contact Form Section */}
+          <div className="mt-8">
             <h2 className="text-xl font-semibold text-gray-700 mb-4 text-center">
               Get in Touch
             </h2>
@@ -184,8 +184,8 @@ const Contact = () => {
                 Submit
               </button>
             </form>
-            </div>
-            </div>
+          </div>
+        </div>
       </main>
 
       {/* Footer */}

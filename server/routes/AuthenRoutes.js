@@ -79,8 +79,8 @@ router.post('/login', async (req, res) => {
 
         // Generate a JWT token
         const token = generateToken({ id: user._id, email: user.email });
-
-        return res.status(200).json({ message: 'Login successful', token, user: { id: user._id, username: user.username, email: user.email } });
+        console.log("From login route : ",user.profilePicture.url)
+        return res.status(200).json({ message: 'Login successful', token, user: { id: user._id, username: user.username, email: user.email ,profileImage:user.profilePicture.url} });
     } catch (err) {
         console.error('Error during user login:', err);
         return res.status(500).json({ message: 'Internal server error', error: err.message });
