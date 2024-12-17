@@ -55,7 +55,7 @@ const Card = ({ poster, username }) => {
     };
 
     return (
-        <div className="w-[280px] mx-auto bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+        <div className="w-[280px] mx-auto  bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
             {/* Image Section */}
             <img
                 src={poster.posterImg.url} // Access the image URL here

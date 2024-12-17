@@ -1,8 +1,8 @@
 import React from 'react';
 import LoginForm from './pages/Forms/LoginForm';
 import RegistrationForm from './pages/Forms/RegistrationForm'; // Add this
-import HomePage from './pages/Home/HomePage'; // Add this
-import { Toaster } from 'react-hot-toast'; // Ensure this library is installed
+import HomePage from './pages/Home/HomePage'; 
+import { Toaster } from 'react-hot-toast'; 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AuthProvider from './context/AuthContext';
 import './App.css'
@@ -38,13 +38,20 @@ const routes = createBrowserRouter([
   { path:'/verify', element:<Verify1/>}
 ]);
 
-const App = () => (
-  <>
-      <Toaster position="top-center" />
-      <AuthProvider>
-          <RouterProvider router={routes} />
-      </AuthProvider>
-  </>
-);
+const App = () => {
+
+  return   (
+    
+    <>
+        <Toaster position="top-center" />
+        <AuthProvider>
+           <RouterProvider router={routes} />
+        </AuthProvider>
+            
+        
+    </>
+  );
+}
+
 
 export default App;

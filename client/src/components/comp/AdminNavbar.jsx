@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import proflogo from '../../assets/imgs/me16.jpg'
 import cartlogo1 from '../../assets/imgs/cartlogo1.png'
-import cartlogo from '../../assets/imgs/112.png'
+import cartlogo from '../../assets/imgs/1121.jpg'
 
 function AdminNavbar({ user, user_id, handleLogout, username }) {
   const navigate = useNavigate();
@@ -23,8 +23,8 @@ function AdminNavbar({ user, user_id, handleLogout, username }) {
         
         {/* Logo and Tagline */}
         <div className="flex flex-col items-center">
-          <b className="text-gray-100 text-3xl  font-bold text-align-center"><img src={cartlogo} className='w-27 h-10 '/>  </b>
-          <p className="text-gray-100 text-1xl font-bold">BRINGING WORDS TO LIFE</p>
+          <b className="text-gray-100 text-3xl  font-bold text-align-center"><img src={cartlogo} style={{width:"150px", height:"55px"}}  className=''/>  </b>
+          {/*<p className="text-gray-100 text-1xl font-bold">BRINGING WORDS TO LIFE</p>*/}
         </div>
 
 

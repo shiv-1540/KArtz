@@ -11,7 +11,7 @@ const IntroAnimation = () => {
   return (
     <>
       {/* Navbar */}
-      <div className="sticky top-0 bg-white shadow-md z-50">
+      <div className="sticky top-0 bg-white shadow-md z-50 py-3">
         <Navbar />
       </div>
 
