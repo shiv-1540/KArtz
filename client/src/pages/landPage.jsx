@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "../components/comp/Footer";
+import Footer from "../components/comp/footer.jsx";
 
 const LandingPage = () => {
   return (
