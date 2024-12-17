@@ -12,7 +12,7 @@ import ManageOrders from "../../components/admin/ManageOrders";
 import ManagePayments from "../../components/admin/ManagePayments";
 
 import { useParams } from "react-router-dom";
-import Footer from "../../components/comp/Footer";
+import Footer from "../../components/comp/footer";
 import VerifyAdmins from "../../components/admin/VerifyAdmin";
 import AdminQueries from "../../components/admin/ReplyQueries";
 
