@@ -2,7 +2,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Navbar from "../../components/comp/Navbar";
-import Card from "../../components/comp/card";
+import Card from "../../components/comp/card.jsx";
 import Footer from "../../components/comp/Footer";
 import IntroAnimation from "../../components/comp/Introanime";
 import CategoryFilter from "../../components/comp/CategoryFilter";
