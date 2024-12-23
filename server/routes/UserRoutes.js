@@ -381,7 +381,7 @@ router.post('/queries', async (req, res) => {
     }
 });
 
-// GET: Get notifications for a user
+// GET: Get notifications for a user/admin
 router.get('/notifications/:userId', async (req, res) => {
     const { userId } = req.params;
 
@@ -410,6 +410,47 @@ router.put('/notifications/:id/read', async (req, res) => {
     } catch (error) {
         console.error('Error marking notification as read:', error);
         return res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
+// Route to get notifications for a specific user by username
+router.get('/notify/:username', async (req, res) => {
+    const { username } = req.params;
+
+    try {
+        // Fetch the user based on the username
+        const user = await User.findOne({ username: username });
+        if (!user) {
+            return res.status(404).json({ message: 'User  not found' });
+        }
+        console.log("Notification checking for:", user.email);
+
+        // Fetch queries related to the user using their email
+        const queries = await Query.find({ email: user.email });
+        console.log("Notifications for him:", queries);
+
+        // Fetch notifications based on the user's ID
+        //const notifications = await Notification.find({ userId: user._id }).populate('userId', 'name email');
+
+        // Prepare the response with only the relevant information
+        // const relevantNotifications = notifications.map(notification => {
+        //     // Find the corresponding query for the notification
+        //     const query = queries.find(q => q._id.equals(notification.queryId));
+        //     return {
+        //         response: {
+        //             adminName: query?.response?.adminName || 'Unknown Admin',
+        //             responseMessage: query?.response?.responseMessage || 'No response available',
+        //             responseDate: query?.response?.responseDate || new Date(),
+        //         },
+        //         userMessage: query?.message || 'No message available',
+        //     };
+        // });
+       console.log("For hIMMM:",queries);
+        res.status(200).json(queries);
+    } catch (error) {
+        console.error('Error fetching notifications:', error);
+        res.status(500).json({ message: 'Internal server error' });
     }
 });
 

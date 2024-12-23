@@ -17,7 +17,7 @@ const AdminSignUp = () => {
 
 
     // Determine current route and target route
-    const isUserLogin = location.pathname === '/';
+    const isUserLogin = location.pathname === '/login';
     const isUserRegister = location.pathname === '/registration';
     const switchTo = isUserLogin || isUserRegister ? 'admin' : 'user';
     const targetPath = isUserLogin
@@ -25,7 +25,7 @@ const AdminSignUp = () => {
       : isUserRegister
       ? '/adminsignup'
       : location.pathname.includes('adminlogin')
-      ? '/'
+      ? '/login'
       : '/registration';
 
     const submitForm = async (e) => {

@@ -35,7 +35,7 @@ const IntroAnimation = () => {
                 key={index}
                 src={poster}
                 alt={`Poster ${index + 1}`}
-                className="w-48 h-64 object-cover"
+                className="w-48 h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-150"
               />
             ))}
             {[poster1, poster2, poster3, poster4, poster5].map((poster, index) => (
@@ -43,7 +43,7 @@ const IntroAnimation = () => {
                 key={`dup-${index}`}
                 src={poster}
                 alt={`Poster ${index + 6}`}
-                className="w-48 h-64 object-cover"
+                className="w-48 h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-150"
               />
             ))}
             {[poster1, poster2, poster3, poster4, poster5].map((poster, index) => (
@@ -51,7 +51,7 @@ const IntroAnimation = () => {
                   key={`dup-${index}`}
                   src={poster}
                   alt={`Poster ${index + 6}`}
-                  className="w-48 h-64 object-cover"
+                  className="w-48 h-64 object-cover transition-transform duration-300 ease-in-out transform hover:scale-150"
                 />
               ))}
           </div>

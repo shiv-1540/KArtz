@@ -18,7 +18,7 @@ function AdminNavbar({ user, user_id, handleLogout, username }) {
   }
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-black shadow-lg">
+    <header className="fixed top-0 left-0 w-full bg-blue-800 shadow-lg">
       <div className="flex justify-between items-center px-6 py-1">
         
         {/* Logo and Tagline */}

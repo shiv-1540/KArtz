@@ -58,6 +58,8 @@
         
 6. Admin Verification 
 
-7. 
+7. Tailwind Color Palleate 
+    this website ->  https://tailwindcolor.com/
        
+8. 
 

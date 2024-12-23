@@ -124,12 +124,12 @@ const UploadPoster = ({username,id}) => {
 
 
     return (
-        <div className="min-h-screen bg-gradient-to-r from-blue-100 via-white to-blue-100 flex items-center justify-center px-6">
-        <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-2xl flex flex-col lg:flex-row">
+        <div className="h-70vh bg-purple-100 flex items-center justify-center px-6">
+        <div className="max-w-4xl mx-auto p-6 bg-gradient-to-r from-blue-200 to-blue-300 bg-blue-200 rounded-lg shadow-2xl flex flex-col lg:flex-row">
             {/* Side Image or Preview */}
-            <div className="hidden lg:flex flex-col justify-center items-center w-1/2 bg-gradient-to-b from-blue-300 to-blue-500 rounded-lg text-white">
-                <h1 className="text-3xl font-extrabold mb-4">Poster Upload</h1>
-                <p className="text-lg mb-6 text-center">Add a new poster with all the details to showcase your collection.</p>
+            <div className="hidden lg:flex flex-col text-darkGray justify-center items-center w-1/2 bg-gradient-to-b from-blue-300 to-blue-500 rounded-lg text-white">
+                <h1 className="text-2xl text-gray-800 font-extrabold mb-4">Poster Upload</h1>
+                <p className="text-md mb-6 text-center">Add a new poster with all the details to showcase your collection.</p>
                 {preview ? (
                     <img
                         src={preview}
@@ -151,7 +151,7 @@ const UploadPoster = ({username,id}) => {
                 <form onSubmit={handleSubmit}>
                     {/* Title */}
                     <div className="mb-4">
-                        <label className="block text-lg font-medium text-gray-700">Title</label>
+                        <label className="block text-md font-medium text-gray-700">Title</label>
                         <input
                             type="text"
                             name="title"
@@ -165,7 +165,7 @@ const UploadPoster = ({username,id}) => {
     
                     {/* Description */}
                     <div className="mb-4">
-                        <label className="block text-lg font-medium text-gray-700">Description</label>
+                        <label className="block text-md font-medium text-gray-700">Description</label>
                         <textarea
                             name="description"
                             value={posterData.description}
@@ -178,7 +178,7 @@ const UploadPoster = ({username,id}) => {
     
                     {/* Category */}
                     <div className="mb-4">
-                        <label className="block text-lg font-medium text-gray-700">Category</label>
+                        <label className="block text-md font-medium text-gray-700">Category</label>
                         <select
                             name="category"
                             value={posterData.category}
@@ -198,7 +198,7 @@ const UploadPoster = ({username,id}) => {
                     {/* Prices */}
                     {['A4', 'A3', 'size12x18', 'size13x19'].map((size, index) => (
                         <div className="mb-4" key={index}>
-                            <label className="block text-lg font-medium text-gray-700">
+                            <label className="block text-md font-medium text-gray-700">
                                 Price ({size.toUpperCase()})
                             </label>
                             <input
@@ -215,7 +215,7 @@ const UploadPoster = ({username,id}) => {
     
                     {/* Image Upload */}
                     <div className="mb-6">
-                        <label className="block text-lg font-medium text-gray-700">Image</label>
+                        <label className="block text-md font-medium text-gray-700">Image</label>
                         <input
                             type="file"
                             onChange={handleImageUpload}

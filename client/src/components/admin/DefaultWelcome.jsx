@@ -5,9 +5,9 @@ const DefaultWelcome = () => {
   const { username } = useParams(); // Destructure username from useParams
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 text-white px-4">
-      <div className="bg-gradient-to-r from-white/10 to-white/20 backdrop-blur-xl rounded-lg shadow-xl p-10 max-w-2xl text-center">
-        <h1 className="text-5xl font-extrabold tracking-tight mb-6">
+    <div className="flex flex-col items-center justify-center h-70vh bg-gradient-to-br from-green-600 to-yellow-500 text-white px-4">
+      <div className="bg-gradient-to-r from-black/10 to-white/20 backdrop-blur-xl rounded-lg shadow-xl p-6 max-w-2xl text-center">
+        <h1 className="text-2xl font-extrabold tracking-tight mb-6">
           Welcome to <span className="text-yellow-300">KArtz</span>, {username}!
         </h1>
         <p className="text-lg text-gray-200 leading-relaxed mb-8">
@@ -43,7 +43,7 @@ const DefaultWelcome = () => {
             </li>
           </ul>
         </div>
-        <blockquote className="bg-purple-700/30 text-white italic text-lg px-6 py-4 rounded-lg border-l-4 border-yellow-300 mb-6">
+        <blockquote className="bg-green-700/60 text-white italic text-lg px-6 py-4 rounded-lg border-l-4 border-yellow-300 mb-6">
           “Greatness is not what you have. It's what you give. Let's make a difference, {username}.” 
           <br />
           <span className="font-bold block text-right mt-2">— Team KArtz</span>

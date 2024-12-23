@@ -16,6 +16,7 @@ import AdminLogin from './pages/Forms/AdminLogin.jsx';
 import AdminSignUp from './pages/Forms/AdminSignUp.jsx';
 import LandingPage from './pages/landPage.jsx';
 import Verify1 from './components/comp/verify.jsx';
+import ProtectedRoute from './components/comp/ProtectedRoute.jsx';
 
 
 const handleLogout=()=>{
@@ -24,31 +25,70 @@ const handleLogout=()=>{
 
 
 const routes = createBrowserRouter([
-  { path: '/', element: <LoginForm/> },
-  { path: '/registration', element: <RegistrationForm /> },
-  { path: '/adminlogin',element: <AdminLogin/>},
-  { path: '/adminsignup',element: <AdminSignUp/>},
-  {path:  '/landpage',element:<LandingPage/>},
-  { path: '/home/:username', element: <HomePage /> },
-  { path: '/cart/:username',  element:<CartPage/>},
-  { path: '/profile/:username',element: <Profile/>},
-  { path: '/contactus', element: <Contact/>},
-  { path: '/admindash/:username/:id', element: <AdminDashboard/>},
-  { path:'/upload/:username', element: <UploadPoster/>},
-  { path:'/verify', element:<Verify1/>}
+      { path:  '/',element:<LandingPage/>},
+      { path: '/login', element: <LoginForm/> },
+      { path: '/registration', element: <RegistrationForm /> },
+      { path: '/adminlogin',element: <AdminLogin/>},
+      { path: '/adminsignup',element: <AdminSignUp/>},
+      
+
+      {
+        path: '/home/:username',
+        element: (
+            <ProtectedRoute>
+                <HomePage />
+            </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/cart/:username',
+        element: (
+            <ProtectedRoute>
+                <CartPage />
+            </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/profile/:username',
+        element: (
+            <ProtectedRoute>
+                <Profile />
+            </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/contactus/:username',
+        element: (
+            <ProtectedRoute>
+                <Contact />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/admindash/:username/:id',
+        element: (
+                <AdminDashboard />
+        ),
+    },
+    {
+        path: '/upload/:username',
+        element: (
+     
+                <UploadPoster />
+    
+        ),
+      },
+     { path:'/verify', element:<Verify1/>}
 ]);
 
 const App = () => {
 
   return   (
-    
     <>
         <Toaster position="top-center" />
         <AuthProvider>
            <RouterProvider router={routes} />
         </AuthProvider>
-            
-        
     </>
   );
 }

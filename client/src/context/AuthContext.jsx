@@ -1,8 +1,11 @@
 // AuthContext.js
 import React, { createContext,useContext, useState, useEffect } from 'react';
-
+import toast from 'react-hot-toast';
+//import { useNavigate } from 'react-router-dom';
 // Create context
 export const AuthContext = createContext();
+import { Navigate } from 'react-router-dom';
+
 // Custom hook to use the AuthContext
 export const useAuth = () => {
   return useContext(AuthContext);
@@ -10,6 +13,7 @@ export const useAuth = () => {
 
 
 const AuthProvider = ({ children }) => {
+  //const navigate=useNavigate();
   const [authData, setAuthData] = useState(() => {
     const storedAuthData = localStorage.getItem('authData');
     try {
@@ -35,12 +39,15 @@ const AuthProvider = ({ children }) => {
   // Login function to store token, userId, and profileImage
   const login = (token, userId, profileImage) => {
     setAuthData({ token, userId, profileImage });
-    console.log("Logging in with token:", token); // Debugging log
+   // console.log("Logging in with token:", token); // Debugging log
+ //   toast.success("You are Logged In")
   };
 
   // Logout function to clear token, userId, and profileImage
   const logout = () => {
-    console.log("Logging out...");
+   // console.log("Logging out...");
+   // toast.error("You are Logging Out.!");
+    localStorage.removeItem('isLoggedIn');
     setAuthData({ token: null, userId: null, profileImage: null });
   };
 

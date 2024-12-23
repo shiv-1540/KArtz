@@ -107,11 +107,11 @@ const Profile = () => {
     };
 
     return (
-        <div className="flex flex-col min-h-screen bg-gray-100" id="profile">
+        <div className="flex flex-col min-h-screen bg-gray-800" id="profile">
         <div className="mb-7">
             <Navbar username={username} profile={authData.profileImage} />
         </div>
-        <div className="flex flex-col md:flex-row flex-1 bg-gray-200 mt-10 p-6 space-y-6 md:space-y-0 md:space-x-6">
+        <div className="flex flex-col md:flex-row flex-1 bg-gray-100 mt-10 p-6 space-y-6 md:space-y-0 md:space-x-6">
             {/* Profile Card */}
             <div className="w-full md:w-1/4 bg-gray-900 shadow-lg p-6 flex flex-col items-center space-y-6 rounded-lg">
                 <img
@@ -132,7 +132,7 @@ const Profile = () => {
             </div>
             {/* Profile Information */}
             <div className="flex-1 bg-white text-gray-800 p-8 rounded-lg shadow-lg">
-                <h2 className="text-3xl font-bold text-gray-800 mb-6">Profile Information</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-6 bg-sky-800 rounded-lg p-4">Profile Information</h2>
                 {isEditing ? (
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {/* Profile Editing Fields */}
@@ -199,22 +199,22 @@ const Profile = () => {
                         </button>
                     </form>
                 ) : (
-                    <div className="space-y-4 bg-gray-50 p-4 rounded-lg shadow-md">
+                    <div className="space-y-4 bg-slate-400 p-4 rounded-lg shadow-md">
                         <h2 className="text-lg">
                             <span className="font-bold">Email:</span> {user?.email}
                         </h2>
                         <h2 className="text-lg">
-                            <span className="font-bold">Phone Number:</span> {user?.phoneNo || 'Not provided'}
+                            <span className="font-bold  p-2">Phone Number:</span> {user?.phoneNo || 'Not provided'}
                         </h2>
                         <h2 className="text-lg">
-                            <span className="font-bold">Address:</span> {user?.address || 'Not provided'}
+                            <span className="font-bold p-2">Address:</span> {user?.address || 'Not provided'}
                         </h2>
                     </div>
                 )}
             </div>
             {/* Order History */}
-            <div className="w-full md:w-1/4 bg-white p-6 shadow-lg rounded-lg overflow-y-auto max-h-screen">
-                <h2 className="text-2xl font-semibold text-gray-800 mb-4">Order History</h2>
+            <div className="w-full md:w-1/4 bg-blue-200 p-6 shadow-lg rounded-lg overflow-y-auto max-h-screen">
+                <h2 className="text-2xl font-bold text-gray-800 mb-4 bg-sky-800 p-3 rounded-lg">Order History</h2>
                 <OrderHistory username={username} />
             </div>
         </div>

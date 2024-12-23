@@ -25,7 +25,7 @@ const OrderHistory = ({ username }) => {
     if (error) return <div>{error}</div>;
 
     return (
-        <div className="bg-white shadow-md rounded-lg p-6 space-y-6">
+        <div className="bg-gray-200 shadow-md rounded-lg p-6 space-y-6">
         
         {orders.length === 0 ? (
             <p className="text-gray-500 text-lg">No orders found.</p>
@@ -36,9 +36,9 @@ const OrderHistory = ({ username }) => {
                         key={order._id}
                         className="border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-lg"
                     >
-                        <p className="text-md font-semibold text-gray-700">Order ID: {order._id}</p>
+                        <p className="text-md font-semibold text-gray-700"><span className='bg-yellow-500 p-1'>Order ID:</span> {order._id}</p>
                         
-                        <h3 className="text-gray-700 mt-4 font-bold">Items:</h3>
+                        <h3 className="text-gray-700 mt-4 font-bold"><span className='bg-yellow-500 p-1'>Items:</span></h3>
                         <ul className="list-disc pl-6 space-y-2">
                             {order.items.map(item => (
                                 <li key={item.posterId} className="text-gray-600">
@@ -47,14 +47,15 @@ const OrderHistory = ({ username }) => {
                             ))}
                         </ul>
 
-                        <p className="text-gray-600">
-                            <span className="font-bold">Total Amount:</span> ${order.totalAmount}
+
+                        <p className="text-gray-600 mt-1">
+                            <span className="font-bold bg-yellow-500 p-1">Total Amount:</span> ${order.totalAmount}
                         </p>
-                        <p className="text-gray-600">
-                            <span className="font-bold">Payment Status:</span> {order.paymentStatus}
+                        <p className="text-gray-600 mt-1">
+                            <span className="font-bold bg-yellow-500 p-1 ">Payment Status:</span> {order.paymentStatus}
                         </p>
-                        <p className="text-gray-600">
-                            <span className="font-bold">Order Status:</span> {order.orderStatus}
+                        <p className="text-gray-600 mt-1">
+                            <span className="font-bold bg-yellow-500 p-1">Order Status:</span> {order.orderStatus}
                         </p>
                     </div>
                 ))}
