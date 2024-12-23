@@ -1,14 +1,6 @@
 import React from "react";
-import Footer from "../components/comp/Footer";
-import landnav from "../assets/imgs/KArtz.png";
-import shiv from "../assets/profile/shiv.jpg";
-import atish from "../assets/profile/atish.jpg";
-import manavi from "../assets/profile/manavi.jpg";
-import FAQSection from "../components/comp/FAQSection";
-import navcontact from "../assets/imgs/contactlogo.png"
-import toast from "react-hot-toast";
+import Footer from "../components/comp/footer";
 
-import { useNavigate } from "react-router-dom";
 const LandingPage = () => {
   const navigate=useNavigate();
 

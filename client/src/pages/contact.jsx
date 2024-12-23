@@ -1,20 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/comp/Navbar";
-import Footer from "../components/comp/Footer";
-import contactlogo from "../assets/imgs/contactlogo.png"
-import contactbanner from '../assets/imgs/contactbanner.png'
-import navcontact from '../assets/imgs/navcontact.png'
-import shiv from "../assets/profile/shiv.jpg";
-import atish from "../assets/profile/atish.jpg";
-import manavi from "../assets/profile/manavi.jpg";
-
-import insta from '../assets/social/insta.png'
-import whatsapp from '../assets/social/whatsapp.png'
-import linkdein from '../assets/social/linkdein.png'
-import twitter from '../assets/social/twitter.png'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faReddit, faWhatsapp, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import Footer from "../components/comp/footer";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
