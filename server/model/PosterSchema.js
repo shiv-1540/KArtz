@@ -39,7 +39,7 @@ const posterSchema = new mongoose.Schema({
             "technology",
             "marvel",
             "movies",
-            "motivation",
+            "motivational",
             "nature",
             "sports",
             "games",
