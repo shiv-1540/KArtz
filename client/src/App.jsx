@@ -17,6 +17,10 @@ import AdminSignUp from './pages/Forms/AdminSignUp.jsx';
 import LandingPage from './pages/landPage.jsx';
 import Verify1 from './components/comp/verify.jsx';
 import ProtectedRoute from './components/comp/ProtectedRoute.jsx';
+import PubSignUp from './pages/Forms/PubSignUp.jsx';
+import PubLogin from './pages/Forms/pubLogin.jsx';
+import PubHome from './pages/Publisher/PubHome.jsx';
+import CardPage from './pages/Home/CardPage.jsx';
 
 
 const handleLogout=()=>{
@@ -30,7 +34,8 @@ const routes = createBrowserRouter([
       { path: '/registration', element: <RegistrationForm /> },
       { path: '/adminlogin',element: <AdminLogin/>},
       { path: '/adminsignup',element: <AdminSignUp/>},
-      
+      { path: '/publogin',element: <PubLogin/>},
+      { path: 'pubsignup',element: <PubSignUp/>},
 
       {
         path: '/home/:username',
@@ -41,10 +46,26 @@ const routes = createBrowserRouter([
         ),
       },
       {
+        path: '/pubhome/:username/:id',
+        element: (
+        
+                <PubHome />
+
+        ),
+      },
+      {
         path: '/cart/:username',
         element: (
             <ProtectedRoute>
                 <CartPage />
+            </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/card/:poster/:username',
+        element: (
+            <ProtectedRoute>
+                <CardPage/>
             </ProtectedRoute>
         ),
       },

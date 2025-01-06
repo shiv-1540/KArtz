@@ -19,6 +19,9 @@ const adminAuthen = require('./routes/AdminRoutes');
 const adminDash=require('./routes/DashRoutes');
 const userRoute=require('./routes/UserRoutes');
 
+const pubAuthen=require('./routes/pubAuthenRoutes');
+const pubRoute=require('./routes/pubRoutes');
+
 const app = express();
 
 // Middlewares
@@ -70,6 +73,10 @@ app.use('/userAuthen', userAuthen); // Ensure this matches frontend
 app.use('/adminAuthen', adminAuthen);
 app.use('/admindash',adminDash);
 app.use('/userdash',userRoute);
+
+app.use('/pubAuthen',pubAuthen);
+app.use('/pubdash',pubRoute);
+
 //app.use("/payment", require("./routes/Payments"));
 
 

@@ -10,7 +10,7 @@ import verify from "../../components/comp/verify";
 import adminlogin from "../../assets/imgs/adminlogin.jpg"
 import weblogo from '../../assets/imgs/1121.jpg'
 
-const AdminLogin = () => {
+const PubLogin = () => {
   const { login } = useContext(AuthContext); // Access the login function from context
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +40,7 @@ const AdminLogin = () => {
 
     try {
       // API call to authenticate user
-      const response = await axios.post("http://localhost:3000/adminAuthen/adminlogin", {
+      const response = await axios.post("http://localhost:3000/pubAuthen/publogin", {
         email,
         password,
       });
@@ -48,14 +48,14 @@ const AdminLogin = () => {
       if (response.status === 200) {
         const { token, userId} = response.data;
         console.log('Token is : ', token);
-        console.log("Username from admin login :",response.data.admin.username);
+        console.log("Username from admin login :",response.data.publisher.username);
         // Save the token and userId using AuthContext
         login(token, userId);
 
-        const username=response.data.admin.username;
-        const id=response.data.admin.id;
+        const username=response.data.publisher.username;
+        const id=response.data.publisher.id;
         toast.success("Login successful!");
-        navigate(`/admindash/${username}/${id}`); // Redirect to the home page after login
+        navigate(`/pubhome/${username}/${id}`); // Redirect to the home page after login
       }
     } catch (error) {
       if (error.response) {
@@ -67,24 +67,24 @@ const AdminLogin = () => {
     }
   };
   const handleNavigate=(path)=>{
-    navigate(path);
- }
- 
+     navigate(path);
+  }
   return (
     <div id="signin">
        {/* Switch Button */}
-     <button
-       onClick={() => navigate(targetPath)}
-       className="fixed top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-600 transition"
-       >
-         Switch to {switchTo === 'admin' ? 'Admin' : 'User'} {isUserLogin || location.pathname.includes('adminlogin') ? 'Login' : 'Register'}
-     </button>
-     <button
-     onClick={() => handleNavigate("/publogin")}
-     className="fixed top-14 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-600 transition"
-    >
-       Switch to Publisher Login
-    </button>
+            <button
+              onClick={() => handleNavigate("/login")}
+              className="fixed top-2 right-4 bg-blue-500 text-white px-3 py-2 rounded shadow-lg hover:bg-blue-600 transition"
+             >
+                Switch to User Login
+            </button>
+
+            <button
+             onClick={() => handleNavigate("/adminlogin")}
+             className="fixed top-14 right-4 bg-green-500 text-white px-3 py-2 rounded shadow-lg hover:bg-blue-600 transition"
+            >
+            Switch to Admin Login
+          </button>
 
       {/* Video Background
       <video autoPlay loop muted id="background-video">
@@ -128,7 +128,7 @@ const AdminLogin = () => {
             </button>
           </div>
           <p>
-            New to Kartz? <Link to="/registration">Sign Up</Link>
+            New to Kartz? <Link to="/pubsignup">Sign Up</Link>
           </p>
           <p>
              Not Verified? <Link to="/verify">Request Admin</Link>
@@ -140,4 +140,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default PubLogin;

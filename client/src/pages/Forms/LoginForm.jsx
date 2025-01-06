@@ -72,17 +72,26 @@ const LoginForm = () => {
       console.error("Error during login:", error);
     }
   };
-
+  const handleNavigate=(path)=>{
+    navigate(path);
+ }
   return (
     <div id="signin" className="h-100vh w-100vh flex flex-col gap-20">
 
           {/* Switch Button */}
           <button
               onClick={() => navigate(targetPath)}
-              className="fixed top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-600 transition"
+              className="fixed top-4 right-4 bg-blue-500 text-white px-3 py-2 rounded shadow-lg hover:bg-blue-600 transition"
             >
               Switch to {switchTo === 'admin' ? 'Admin' : 'User'} {isUserLogin || location.pathname.includes('adminlogin') ? 'Login' : 'Register'}
           </button>
+          
+          <button
+          onClick={() => handleNavigate("/publogin")}
+          className="fixed top-14 right-4 bg-green-500 text-white px-3 py-2 rounded shadow-lg hover:bg-blue-600 transition"
+         >
+         Switch to Publisher Login
+       </button>
           
           {/* {/* Video Background 
             <video autoPlay loop muted id="background-video">

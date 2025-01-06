@@ -62,7 +62,9 @@ const Homepage = () => {
         <h2 className="text-lg text-gray-900 font-bold mb-4">BEST SELLINGS</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-gray-900">
           {posters.map((poster) => (
+           
             <Card key={poster._id} poster={poster} username={username}/>
+     
           ))}
         </div>
       </main>

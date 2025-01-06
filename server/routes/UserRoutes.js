@@ -35,6 +35,25 @@ router.get('/posters', async (req, res) => {
     }
 });
 
+// Fetch a particular poster by ID
+router.get('/posters/:id', async (req, res) => {
+    try {
+        const { id } = req.params; // Extract the poster ID from the URL parameters
+
+        // Fetch the poster from the database
+        const poster = await Poster.findById(id);
+
+        if (!poster) {
+            return res.status(404).json({ error: 'Poster not found' });
+        }
+       console.log("Poster from userRoutes par poster:",poster);
+        res.status(200).json(poster);
+    } catch (err) {
+        console.error('Error fetching poster:', err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 
 // Get User Profile by Username
 router.get('/user/:username', async (req, res) => {

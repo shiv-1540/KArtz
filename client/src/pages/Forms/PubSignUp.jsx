@@ -1,13 +1,15 @@
+
+
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'; // Import Axios
 import toast from "react-hot-toast";
 import Input from "@mui/material/Input";
 import Button from '@mui/material/Button';
-import signup1 from '/videos/signup.mp4';
+import signup1 from '../../../public/videos/signup.mp4';
 import './signup.css';
 
-const RegistrationForm = () => {
+const PubSignUp = () => {
     const [name, setName] = useState("");
     const [username, setUserName] = useState("");
     const [email, setEmail] = useState("");
@@ -15,18 +17,18 @@ const RegistrationForm = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
 
-      // Determine current route and target route
-      const isUserLogin = location.pathname === '/login';
-      const isUserRegister = location.pathname === '/registration';
-      const switchTo = isUserLogin || isUserRegister ? 'admin' : 'user';
-      const targetPath = isUserLogin
-        ? '/adminlogin'
-        : isUserRegister
-        ? '/adminsignup'
-        : location.pathname.includes('adminlogin')
-        ? '/login'
-        : '/registration';
 
+    // Determine current route and target route
+    const isUserLogin = location.pathname === '/login';
+    const isUserRegister = location.pathname === '/registration';
+    const switchTo = isUserLogin || isUserRegister ? 'admin' : 'user';
+    const targetPath = isUserLogin
+      ? '/adminlogin'
+      : isUserRegister
+      ? '/adminsignup'
+      : location.pathname.includes('adminlogin')
+      ? '/login'
+      : '/registration';
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -43,7 +45,7 @@ const RegistrationForm = () => {
 
         try {
             // API call to the backend
-            const response = await axios.post("http://localhost:3000/userAuthen/signup", {
+            const response = await axios.post("http://localhost:3000/pubAuthen/pubsignup", {
               name,
               username,
               email,
@@ -53,7 +55,7 @@ const RegistrationForm = () => {
           
             if (response.status === 201) {
                 toast.success('Registration successful!');
-                navigate('/login'); // Redirect to login page
+                navigate('/publogin'); // Redirect to login page
             }
         } catch (error) {
             if (error.response) {
@@ -64,26 +66,24 @@ const RegistrationForm = () => {
             console.error("Error submitting form:", error);
         }
     };
-    const handleNavigate=(path)=>{
-        navigate(path);
-     }
+
     return (
         <main>
             <div className='main-container'>
-         {/* Switch Button */}
-          <button
-            onClick={() => navigate(targetPath)}
-            className="fixed top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-600 transition"
-          >
-           Switch to {switchTo === 'admin' ? 'Admin' : 'User'} {isUserLogin || location.pathname.includes('adminlogin') ? 'Login' : 'Register'}
-         </button>
 
-         <button
-         onClick={() => handleNavigate("/adminlogin")}
-         className="fixed top-14 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-600 transition"
-            >
-            Switch to Publisher SignUp
-        </button>
+                {/* Switch Button */}
+                <button
+                onClick={() => handleNavigate("/registration")}
+                className="fixed top-2 right-4 bg-blue-500 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-600 transition"
+                >
+                  Switch to User SignUp
+              </button>
+              <button
+              onClick={() => handleNavigate("/adminsignup")}
+              className="fixed top-14 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-600 transition"
+              >
+                Switch to Admin SignUp
+            </button>
                 {/* Video Background */}
                 <video autoPlay loop muted id="background-video">
                     <source src={signup1} type="video/mp4" />
@@ -149,4 +149,4 @@ const RegistrationForm = () => {
     );
 };
 
-export default RegistrationForm;
+export default PubSignUp;

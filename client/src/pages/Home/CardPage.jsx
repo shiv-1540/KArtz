@@ -1,12 +1,29 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import toast from "react-hot-toast"; // Ensure you have react-toastify installed
 
-const Card = ({ poster, username }) => {
+const CardPage = () => {
+    const { posterId, username } = useParams();
+
     const [selectedSize, setSelectedSize] = useState('A4'); // Set to 'A4' instead of full description
     const [quantity, setQuantity] = useState(1); // Default quantity
     const navigate = useNavigate();
+    const  [poster,setPoster]=useState(null);
+
+    useEffect(() => {
+        const fetchPoster = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/userdash/posters/${posterId}`); // Adjust the endpoint as needed
+                setPoster(response.data);
+            } catch (error) {
+                console.error('Error fetching poster:', error);
+                toast.error('Failed to load poster details.');
+            }
+        };
+
+        fetchPoster();
+    }, [posterId]);
 
     const sizes = [
         { label: 'A4', price: 499 },
@@ -55,13 +72,18 @@ const Card = ({ poster, username }) => {
     };
 
     return (
-        <div className="w-[280px] mx-auto  bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300" onClick={navigate(`/card/:${poster._id}/:${username}`)}>
-            {/* Image Section */}
-            <img
-                src={poster.posterImg.url} // Access the image URL here
-                alt={poster.title} // Assuming poster has a title property
-                className="w-full h-[300px] object-cover bg-gray-200"
+        <div className='flex '>
+           <div className='w-1/3 '>
+               {/* Image Section */}
+             <img
+              src={poster.posterImg.url} // Access the image URL here
+              alt={poster.title} // Assuming poster has a title property
+              className="w-full h-[300px] object-cover bg-gray-200"
             />
+           </div>
+      
+        <div className="w-2/3  bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+           
 
             {/* Content Section */}
             <div className="p-5">
@@ -128,9 +150,10 @@ const Card = ({ poster, username }) => {
                 </button>
                 </div>
             </div>
-            </div>
+        </div>
+        </div>
 
     );
 };
 
-export default Card;
+export default CardPage;
