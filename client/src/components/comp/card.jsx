@@ -31,7 +31,7 @@ const Card = ({ poster, username }) => {
             
             console.log("Poster price: ", price); // Log the extracted price
             
-            const response = await axios.post(`http://localhost:3000/userdash/cart/${username}`, {
+            const response = await axios.post(`https://kartz.onrender.com/userdash/cart/${username}`, {
                 items: [
                     {
                         posterId: poster._id, // Use the poster ID

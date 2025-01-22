@@ -43,7 +43,7 @@ const RegistrationForm = () => {
 
         try {
             // API call to the backend
-            const response = await axios.post("http://localhost:3000/userAuthen/signup", {
+            const response = await axios.post("https://kartz.onrender.com/userAuthen/signup", {
               name,
               username,
               email,

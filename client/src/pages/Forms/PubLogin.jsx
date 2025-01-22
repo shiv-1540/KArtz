@@ -40,7 +40,7 @@ const PubLogin = () => {
 
     try {
       // API call to authenticate user
-      const response = await axios.post("http://localhost:3000/pubAuthen/publogin", {
+      const response = await axios.post("https://kartz.onrender.com/pubAuthen/publogin", {
         email,
         password,
       });

@@ -43,7 +43,7 @@ const AdminSignUp = () => {
 
         try {
             // API call to the backend
-            const response = await axios.post("http://localhost:3000/adminAuthen/adminsignup", {
+            const response = await axios.post("https://kartz.onrender.com/adminAuthen/adminsignup", {
               name,
               username,
               email,

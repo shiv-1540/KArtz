@@ -65,7 +65,7 @@ const CartPage = () => {
     
         try {
             // Step 1: Create an order in Razorpay
-            const response = await axios.post('http://localhost:3000/create-order', { amount, currency });
+            const response = await axios.post('https://kartz.onrender.com/create-order', { amount, currency });
             const { id, amount: orderAmount, currency: orderCurrency } = response.data;
     
             // Step 2: Set up Razorpay options
@@ -83,7 +83,7 @@ const CartPage = () => {
     
                     // Step 3: Create an order in your database
                     try {
-                        const orderResponse = await axios.post(`http://localhost:3000/userdash/checkout/${username}`, {
+                        const orderResponse = await axios.post(`https://kartz.onrender.com/userdash/checkout/${username}`, {
                             paymentMethod: 'Credit Card', // Change this based on the selected payment method
                             items: cart.items, // Pass the items from the cart
                             totalAmount: amount, // Pass the total amount

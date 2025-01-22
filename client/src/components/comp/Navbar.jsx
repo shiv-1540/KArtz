@@ -49,7 +49,7 @@ function Navbar() {
 
         const fetchNotifications = async () => {
           try {
-              const response = await fetch(`http://localhost:3000/userdash/notify/${username}`); 
+              const response = await fetch(`https://kartz.onrender.com/userdash/notify/${username}`); 
               const data = await response.json();
 
               console.log("Notifications : ",data);

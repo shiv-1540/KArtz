@@ -45,7 +45,7 @@ const PubSignUp = () => {
 
         try {
             // API call to the backend
-            const response = await axios.post("http://localhost:3000/pubAuthen/pubsignup", {
+            const response = await axios.post("https://kartz.onrender.compubAuthen/pubsignup", {
               name,
               username,
               email,

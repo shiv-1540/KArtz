@@ -9,7 +9,7 @@ const OrderHistory = ({ username }) => {
     useEffect(() => {
         const fetchOrderHistory = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/userdash/order-history/${username}`);
+                const response = await axios.get(`https://kartz.onrender.com/userdash/order-history/${username}`);
                 setOrders(response.data);
             } catch (err) {
                 setError('Error fetching order history');

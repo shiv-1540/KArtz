@@ -40,7 +40,7 @@ const AdminLogin = () => {
 
     try {
       // API call to authenticate user
-      const response = await axios.post("http://localhost:3000/adminAuthen/adminlogin", {
+      const response = await axios.post("https://kartz.onrender.com/adminAuthen/adminlogin", {
         email,
         password,
       });

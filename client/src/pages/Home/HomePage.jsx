@@ -25,7 +25,7 @@ const Homepage = () => {
    
   const fetchPosters = async (category) => {
     try {
-        const response = await axios.get(`http://localhost:3000/userdash/posters`, {
+        const response = await axios.get(`https://kartz.onrender.com/userdash/posters`, {
             params: { category: category === 'All' ? undefined : category } // Send undefined if "All" is selected
         });
         setPosters(response.data);

@@ -14,7 +14,7 @@ const CardPage = () => {
     useEffect(() => {
         const fetchPoster = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/userdash/posters/${posterId}`); // Adjust the endpoint as needed
+                const response = await axios.get(`https://kartz.onrender.com/userdash/posters/${posterId}`); // Adjust the endpoint as needed
                 setPoster(response.data);
             } catch (error) {
                 console.error('Error fetching poster:', error);
@@ -48,7 +48,7 @@ const CardPage = () => {
             
             console.log("Poster price: ", price); // Log the extracted price
             
-            const response = await axios.post(`http://localhost:3000/userdash/cart/${username}`, {
+            const response = await axios.post(`https://kartz.onrender.com/userdash/cart/${username}`, {
                 items: [
                     {
                         posterId: poster._id, // Use the poster ID

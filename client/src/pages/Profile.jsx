@@ -31,7 +31,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchUser  = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/userdash/user/${username}`);
+                const response = await axios.get(`https://kartz.onrender.com/userdash/user/${username}`);
                 setUser (response.data);
                 setFormData({
                     name: response.data.name,
@@ -76,7 +76,7 @@ const Profile = () => {
 
         setLoading(true);
         try {
-            const res = await axios.post('http://localhost:3000/uploadprofimg', {
+            const res = await axios.post('https://kartz.onrender.com/uploadprofimg', {
                 image_url: preview,
             });
             setProfilePicture({ publicId: res.data.public_id, url: res.data.secure_url });
@@ -97,7 +97,7 @@ const Profile = () => {
                 ...formData,
                 profilePicture
             };
-            const response = await axios.put(`http://localhost:3000/userdash/updateuser/${username}`, data);
+            const response = await axios.put(`https://kartz.onrender.com/userdash/updateuser/${username}`, data);
             setUser (response.data);
             setIsEditing(false);
             toast.success('Profile updated successfully!');

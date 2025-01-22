@@ -35,7 +35,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/userdash/queries", { // Updated endpoint
+      const response = await fetch("https://kartz.onrender.com/userdash/queries", { // Updated endpoint
         method: "POST",
         headers: {
           "Content-Type": "application/json",
