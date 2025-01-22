@@ -4,6 +4,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
+  base: './',
   resolve: {
     alias: {
       // Example alias (replace '@chakra-ui/react' alias if not needed)
@@ -11,3 +12,4 @@ export default defineConfig({
     },
   },
 });
+
