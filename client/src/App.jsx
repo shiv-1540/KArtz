@@ -18,7 +18,7 @@ import LandingPage from './pages/landPage.jsx';
 import Verify1 from './components/comp/verify.jsx';
 import ProtectedRoute from './components/comp/ProtectedRoute.jsx';
 import PubSignUp from './pages/Forms/PubSignUp.jsx';
-import PubLogin from './pages/Forms/pubLogin.jsx';
+import PubLogin from './pages/Forms/PubLogin.jsx';
 
 import PubHome from './pages/Publisher/PubHome.jsx';
 import CardPage from './pages/Home/CardPage.jsx';
